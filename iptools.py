@@ -15,7 +15,7 @@ class IP(QtGui.QMainWindow,form_class):
         self.btngetwanip.clicked.connect(self.getwanip)
         self.statusbar.showMessage("Product of MSF (www.mmsecurity.net)")
 
-        self.lblpic.setPixmap(QtGui.QPixmap(os.getcwd()+"resources/msf.png"))
+        self.lblpic.setPixmap(QtGui.QPixmap(os.getcwd()+"/resources/msf.png"))
 
         self.show()
 

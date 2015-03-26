@@ -1,4 +1,6 @@
-import sys, os, urllib, socket, webbrowser
+import sys, os, urllib, socket 
+import fcntl, struct
+#import webbrowser
 
 from PyQt4 import QtCore, QtGui, uic
 
@@ -15,14 +17,16 @@ class IP(QtGui.QMainWindow,form_class):
         self.btngetwanip.clicked.connect(self.getwanip)
         self.statusbar.showMessage("Product of MSF (www.mmsecurity.net)")
 
-        self.lblpic.setPixmap(QtGui.QPixmap(os.getcwd()+"/resources/msf.png"))
-        self.lblpic.mousePressEvent = self.openBrowser()
+        #self.lblpic.setPixmap(QtGui.QPixmap(os.getcwd()+"/resources/msf.png"))
+        #self.lblpic.mousePressEvent = self.openBrowser()
         self.show()
 
     def getlanip(self):
-        lanip = socket.gethostbyname(socket.gethostname())
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        ifname = 'wlan0'
+        lanip = socket.inet_ntoa(fcntl.ioctl(s.fileno(),0x8915,struct.pack('256s',ifname[:15]))[20:24])
         self.txtlanip.setText(lanip)
-    
+
     def getwanip(self):
         try:
             wanip = urllib.urlopen("http://myip.dnsdynamic.org/").read()
@@ -31,9 +35,9 @@ class IP(QtGui.QMainWindow,form_class):
         else:
             self.txtwanip.setText(wanip)
 
-    def openBrowser(self):
-        browser = webbrowser.WindowsDefault()
-        browser.open_new("http://www.mmsecurity.net/forum")
+    # def openBrowser(self):
+    #     browser = webbrowser.WindowsDefault()
+    #     browser.open_new("http://www.mmsecurity.net/forum")
 
 def main():
     app = QtGui.QApplication(sys.argv)

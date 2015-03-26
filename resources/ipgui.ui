@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>294</width>
-    <height>188</height>
+    <width>290</width>
+    <height>115</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -117,25 +117,6 @@
       </widget>
      </item>
     </layout>
-   </widget>
-   <widget class="QLabel" name="lblpic">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>100</y>
-      <width>271</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="scaledContents">
-     <bool>true</bool>
-    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
